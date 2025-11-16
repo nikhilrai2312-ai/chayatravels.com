@@ -71,13 +71,34 @@
         p { font-size: 1.3rem; }
         .chaya-face { width: 180px; }
     }
+
+    /* Login button on top-right */
+    .login-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 1rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        transition: 0.3s;
+    }
+
+    .login-btn:hover {
+        background-color: #3e8e41;
+    }
 </style>
 </head>
 <body>
     <div class="landing">
         <h1>Welcome to Chaya Travels</h1>
         <p>Explore the world with us 🌎</p>
-        <button class="cta-btn">Get Started</button>
+        <button class="cta-btn" onclick="alert('Get Started clicked!')">Get Started</button>
+        <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
         <img src="assets/chaya.png" alt="Chaya AI Face" class="chaya-face">
     </div>
 </body>
