@@ -1,90 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaya Travels</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chaya Travels</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Arial', sans-serif;
+        overflow: hidden;
+        background: url('assets/Background.png') no-repeat center center;
+        background-size: cover;
+    }
 
-        /* Full-screen background */
-        .landing {
-            background: url('assets/Background.png') no-repeat center center;
-            background-size: cover;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding-left: 60px;
-            position: relative;
-            color: white;
-        }
+    .landing {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-left: 60px;
+        color: white;
+        position: relative;
+    }
 
-        /* Heading and subheading */
-        h1 {
-            font-size: 4rem;
-            margin: 0;
-            text-shadow: 3px 3px 15px rgba(0,0,0,0.7);
-        }
+    h1 {
+        font-size: 4rem;
+        margin: 0;
+        text-shadow: 3px 3px 15px rgba(0,0,0,0.7);
+    }
 
-        p {
-            font-size: 1.7rem;
-            margin-top: 10px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
-        }
+    p {
+        font-size: 1.7rem;
+        margin-top: 10px;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+    }
 
-        /* CTA button */
-        .cta-btn {
-            margin-top: 25px;
-            padding: 14px 30px;
-            font-size: 1.2rem;
-            background-color: #ff6b81;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: 0.3s;
-        }
+    .cta-btn {
+        margin-top: 25px;
+        padding: 14px 30px;
+        font-size: 1.2rem;
+        background-color: #ff6b81;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        transition: 0.3s;
+    }
 
-        .cta-btn:hover {
-            background-color: #ff3b5f;
-        }
+    .cta-btn:hover {
+        background-color: #ff3b5f;
+    }
 
-        /* Chaya AI face bouncing */
-        .chaya-face {
-            position: absolute;
-            right: 50px;
-            top: 50%;
-            width: 250px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            animation: bounce 2s ease-in-out infinite;
-        }
+    /* Chaya bounce */
+    .chaya-face {
+        position: absolute;
+        bottom: 0; /* start from the floor */
+        right: 50px;
+        width: 250px;
+        border-radius: 50%;
+        border: 5px solid white;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        animation: ballBounce 2s cubic-bezier(.28,.84,.42,1) infinite;
+    }
 
-        @keyframes bounce {
-            0%   { transform: translate(0, -50%) rotate(-5deg); }
-            25%  { transform: translate(10px, -70%) rotate(-10deg); }
-            50%  { transform: translate(-5px, -50%) rotate(0deg); }
-            75%  { transform: translate(5px, -30%) rotate(5deg); }
-            100% { transform: translate(0, -50%) rotate(-5deg); }
-        }
+    @keyframes ballBounce {
+        0%   { transform: translateY(0); }
+        25%  { transform: translateY(-150px); } /* bounce up */
+        50%  { transform: translateY(0); }      /* hit floor */
+        75%  { transform: translateY(-80px); }  /* smaller bounce */
+        100% { transform: translateY(0); }      /* back to floor */
+    }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            p { font-size: 1.3rem; }
-            .chaya-face { width: 180px; right: 30px; }
-        }
-    </style>
+    @media (max-width: 768px) {
+        h1 { font-size: 3rem; }
+        p { font-size: 1.3rem; }
+        .chaya-face { width: 180px; right: 30px; }
+    }
+</style>
 </head>
 <body>
     <div class="landing">
