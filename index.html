@@ -4,58 +4,93 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chaya Travels</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
     body, html {
         margin: 0;
         padding: 0;
         height: 100%;
-        font-family: 'Arial', sans-serif;
+        font-family: 'Roboto', sans-serif;
         overflow: hidden;
         background: url('assets/Background.png') no-repeat center center;
         background-size: cover;
+        color: white;
     }
 
+    /* Dark overlay for better text readability */
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 0;
+    }
+
+    /* Landing content */
     .landing {
+        position: relative;
+        z-index: 1;
         height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
         padding-left: 60px;
-        color: white;
-        position: relative;
+        gap: 20px;
+        animation: fadeIn 1.5s ease-in-out;
     }
 
     h1 {
         font-size: 4rem;
         margin: 0;
-        text-shadow: 3px 3px 15px rgba(0,0,0,0.7);
+        line-height: 1.2;
+        animation: slideIn 1s ease-out;
     }
 
     p {
         font-size: 1.7rem;
-        margin-top: 10px;
-        text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+        margin: 0;
+        animation: slideIn 1.2s ease-out;
+    }
+
+    /* Buttons */
+    .cta-btn, .login-btn {
+        padding: 14px 28px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        font-weight: bold;
     }
 
     .cta-btn {
-        margin-top: 25px;
-        padding: 14px 30px;
-        font-size: 1.2rem;
-        background-color: #ff6b81;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
         color: white;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        transition: 0.3s;
     }
 
     .cta-btn:hover {
-        background-color: #ff3b5f;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.5);
     }
 
-    /* Chaya image fixed at bottom-right */
+    .login-btn {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        background: rgba(255,255,255,0.2);
+        color: white;
+    }
+
+    .login-btn:hover {
+        background: rgba(255,255,255,0.4);
+        transform: scale(1.05);
+    }
+
+    /* Chaya face */
     .chaya-face {
         position: absolute;
         bottom: 20px;
@@ -64,40 +99,38 @@
         border-radius: 50%;
         border: 5px solid white;
         box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        transition: transform 0.3s ease;
+    }
+
+    .chaya-face:hover {
+        transform: scale(1.05) rotate(-5deg);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(30px);}
+        to { opacity: 1; transform: translateY(0);}
     }
 
     @media (max-width: 768px) {
         h1 { font-size: 3rem; }
         p { font-size: 1.3rem; }
         .chaya-face { width: 180px; }
-    }
-
-    /* Login button on top-right */
-    .login-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        padding: 10px 20px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        border-radius: 20px;
-        cursor: pointer;
-        font-size: 1rem;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        transition: 0.3s;
-    }
-
-    .login-btn:hover {
-        background-color: #3e8e41;
+        .landing { padding-left: 30px; }
     }
 </style>
 </head>
 <body>
+    <div class="overlay"></div>
+
     <div class="landing">
         <h1>Welcome to Chaya Travels</h1>
         <p>Explore the world with us 🌎</p>
-        <button class="cta-btn" onclick="alert('Get Started clicked!')">Get Started</button>
+        <button class="cta-btn" onclick="window.location.href='login.html'">Get Started</button>
         <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
         <img src="assets/chaya.png" alt="Chaya AI Face" class="chaya-face">
     </div>
