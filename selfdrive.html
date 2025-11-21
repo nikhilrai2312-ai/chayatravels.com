@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self Drive - Chaya Travels</title>
+<style>
+body {margin:0; font-family:Arial; background:#f2f7ff; padding:20px;}
+h2 {color:#0059c9; text-align:center;}
+.cars {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:20px;}
+.card {background:white; padding:15px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+.card img {width:100%; border-radius:10px;}
+.price {color:#0059c9; font-weight:bold; margin-top:10px;}
+.btn {margin-top:10px; display:inline-block; background:#0059c9; color:white; padding:10px 20px; text-decoration:none; border-radius:8px;}
+</style>
+</head>
+<body>
+<h2>Select Your Self‑Drive Car</h2>
+<div class="cars">
+<div class="card">
+<img src="car3.jpg" alt="Car 3">
+<h3>Baleno</h3>
+<p class="price">₹1600 / Day<br>150 km limit<br>₹12 per extra km</p>
+<a class="btn" href="confirm.html?car=Baleno&type=SelfDrive">Book Now</a>
+</div>
+<div class="card">
+<img src="car4.jpg" alt="Car 4">
+<h3>Creta</h3>
+<p class="price">₹2600 / Day<br>150 km limit<br>₹15 per extra km</p>
+<a class="btn" href="confirm.html?car=Creta&type=SelfDrive">Book Now</a>
+</div>
+</div>
+</body>
+</html>
