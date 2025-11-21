@@ -1,3 +1,4 @@
+/* General */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -6,14 +7,17 @@ body {
 
 /* Header */
 .header {
-    padding: 15px;
+    padding: 10px 0;
     text-align: center;
-    background: white;
+    background: #ffffff;
     border-bottom: 1px solid #ddd;
 }
 
 .logo {
-    width: 180px;
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    cursor: pointer;
 }
 
 /* Landing Section */
@@ -27,9 +31,10 @@ body {
     margin-bottom: 10px;
 }
 
+/* Buttons */
 .buttons .btn {
-    padding: 12px 28px;
-    margin: 10px;
+    padding: 14px 28px;
+    margin: 12px;
     text-decoration: none;
     font-size: 1.1rem;
     border-radius: 6px;
@@ -46,20 +51,27 @@ body {
     color: white;
 }
 
-/* Destinations */
+/* Destination Images */
 .dest-section {
     text-align: center;
     padding: 40px 20px;
 }
 
-.dest-section .dest-img {
-    width: 300px;
-    border-radius: 10px;
-    margin: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+.destinations {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-/* Car pages */
+.dest-img {
+    width: 260px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Car Pages */
 .page-title {
     text-align: center;
     margin-top: 25px;
@@ -84,6 +96,7 @@ body {
     border-radius: 10px;
 }
 
+/* Booking form */
 .booking-form {
     display: flex;
     flex-direction: column;
