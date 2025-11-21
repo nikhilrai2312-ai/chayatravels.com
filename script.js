@@ -22,9 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     `To: ${form.end_date.value}`;
             }
 
-            const url =
-                `https://wa.me/918123711526?text=${encodeURIComponent(message)}`;
-
+            const url = `https://wa.me/918123711526?text=${encodeURIComponent(message)}`;
             window.open(url, "_blank");
         });
     });
