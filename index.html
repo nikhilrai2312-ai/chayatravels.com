@@ -1,736 +1,300 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaya Travels - Car Rental & Taxi Service</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#2563eb',
-                        secondary: '#1e40af',
-                        accent: '#3b82f6',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-        
-        .service-btn {
-            transition: all 0.3s ease;
-        }
-        
-        .service-btn.active {
-            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.5);
-        }
-        
-        .vehicle-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .vehicle-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .feature-card {
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .pricing-table {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .pricing-popular {
-            transform: scale(1.05);
-            border: 2px solid #2563eb;
-        }
-        
-        @media (max-width: 768px) {
-            .pricing-popular {
-                transform: scale(1);
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign in — FakeBook</title>
+
+  <!-- Google font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f0f2f5;
+      --primary:#1877f2; /* fb-like blue */
+      --card:#fff;
+      --muted:#90949c;
+      --danger:#e53e3e;
+      --radius:10px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg, #e9efff 0%, var(--bg) 60%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+      color:#111;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:1100px;
+      display:grid;
+      grid-template-columns: 480px 1fr;
+      gap:32px;
+      align-items:center;
+    }
+
+    /* left hero */
+    .hero{
+      background: none;
+    }
+    .logo{
+      font-size:36px;
+      font-weight:700;
+      color:var(--primary);
+      margin-bottom:16px;
+      letter-spacing: -0.5px;
+    }
+    .headline{
+      font-size:28px;
+      margin:0 0 12px 0;
+      color:#1c2b39;
+    }
+    .sub{
+      color:var(--muted);
+      line-height:1.5;
+      margin-bottom:24px;
+    }
+    .features{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:12px;
+    }
+    .feat{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;background:var(--primary);margin-top:6px;
+    }
+
+    /* right card */
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow: 0 8px 30px rgba(18,30,50,0.08);
+      padding:28px;
+      max-width:420px;
+      margin-left:auto;
+    }
+
+    form { display:flex; flex-direction:column; gap:12px; }
+    .input-row{
+      display:flex;
+      gap:12px;
+      flex-direction:column;
+    }
+    label{font-size:13px;color:var(--muted);margin-bottom:6px}
+    input[type="email"], input[type="password"]{
+      width:100%;
+      padding:12px 14px;
+      border-radius:8px;
+      border:1px solid #dfe6f0;
+      font-size:15px;
+      outline:none;
+    }
+    input:focus{ box-shadow:0 0 0 4px rgba(24,119,242,0.08); border-color:var(--primary) }
+
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .remember{
+      font-size:13px;
+      color:var(--muted);
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .btn-primary{
+      background:var(--primary);
+      color:#fff;
+      border:none;
+      padding:12px 14px;
+      border-radius:8px;
+      font-weight:600;
+      cursor:pointer;
+      font-size:15px;
+      transition:transform .08s ease, box-shadow .08s ease;
+    }
+    .btn-primary:active{ transform:translateY(1px) }
+    .btn-secondary{
+      background:transparent;
+      color:var(--primary);
+      border:none;
+      padding:10px;
+      cursor:pointer;
+      font-weight:600;
+      font-size:15px;
+    }
+    .small{
+      font-size:13px;color:var(--muted);
+    }
+    .create{
+      display:flex;
+      gap:10px;
+      margin-top:10px;
+      align-items:center;
+      justify-content:center;
+    }
+    .create .cta{
+      background:linear-gradient(90deg, #42a5f5, #1877f2);
+      color:#fff;padding:10px 14px;border-radius:8px;border:none;font-weight:700;
+      cursor:pointer;
+    }
+    .links{
+      text-align:center;
+      margin-top:8px;
+    }
+    .link{
+      color:var(--primary);
+      text-decoration:none;
+      font-weight:600;
+      font-size:13px;
+    }
+
+    .error{
+      color:var(--danger);
+      font-size:13px;
+      margin-top:4px;
+    }
+
+    /* small screen */
+    @media (max-width:880px){
+      .wrap{ grid-template-columns: 1fr; gap:18px; padding:6px; max-width:760px;}
+      .hero{order:2}
+      .card{order:1; margin-left:0}
+    }
+
+    /* subtle animation */
+    .card, .hero{ transform-origin:center; transition: transform .45s cubic-bezier(.2,.9,.2,1) }
+    body:has(.card:hover) .card{ transform:translateY(-4px) }
+  </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="bg-primary w-10 h-10 rounded-full flex items-center justify-center">
-                    <i class="fas fa-car text-white text-xl"></i>
-                </div>
-                <h1 class="text-2xl font-bold text-gray-800">Chaya Travels</h1>
-            </div>
-            <nav class="hidden md:block">
-                <ul class="flex space-x-8">
-                    <li><a href="#" class="text-gray-600 hover:text-primary font-medium">Home</a></li>
-                    <li><a href="#vehicles" class="text-gray-600 hover:text-primary font-medium">Vehicles</a></li>
-                    <li><a href="#services" class="text-gray-600 hover:text-primary font-medium">Services</a></li>
-                    <li><a href="#contact" class="text-gray-600 hover:text-primary font-medium">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium py-2 px-4 rounded-lg transition-colors">
-                Call Now
-            </button>
-        </div>
-    </header>
+<body>
 
-    <!-- Hero Section -->
-    <section class="py-16 bg-gradient-to-r from-primary to-secondary text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">Premium Car Rental & Taxi Services</h1>
-            <p class="text-xl mb-10 max-w-2xl mx-auto">
-                Choose between our reliable taxi service or self-drive options for your next journey
-            </p>
-            
-            <!-- Service Selector -->
-            <div class="flex justify-center mb-12">
-                <div class="bg-white/20 backdrop-blur-sm rounded-xl p-1 inline-flex">
-                    <button id="taxi-btn" class="service-btn px-8 py-4 rounded-lg font-semibold active">
-                        Taxi Service
-                    </button>
-                    <button id="self-drive-btn" class="service-btn px-8 py-4 rounded-lg font-semibold">
-                        Self Drive
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="wrap" role="main" aria-labelledby="hero-title">
+    <!-- LEFT -->
+    <div class="hero" aria-hidden="false">
+      <div class="logo" aria-hidden="true">FakeBook</div>
+      <h1 id="hero-title" class="headline">Connect with friends and the world around you.</h1>
+      <p class="sub">See photos and updates from people you know. Share what’s new in your life and discover what's going on in the world.</p>
 
-    <!-- Vehicle Grid -->
-    <section id="vehicles" class="py-16">
-        <div class="container mx-auto px-4">
-            <h2 id="section-title" class="text-3xl font-bold text-center mb-4 text-gray-800">
-                Available Taxi Vehicles
-            </h2>
-            <p id="section-description" class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-                Professional drivers, comfortable rides for any occasion
-            </p>
-
-            <div id="vehicle-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Taxi Vehicles will be populated here -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Modal -->
-    <div id="booking-modal" class="modal">
-        <div class="bg-white rounded-xl max-w-md w-full p-6 mx-4">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-2xl font-bold">Book Your Ride</h3>
-                <button id="close-modal" class="text-gray-500 hover:text-gray-700">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">
-                        Vehicle
-                    </label>
-                    <div id="selected-vehicle" class="font-medium"></div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">
-                        From Date
-                    </label>
-                    <div class="relative">
-                        <i class="fas fa-calendar absolute left-3 top-3 h-4 w-4 text-gray-400"></i>
-                        <input type="date" id="from-date" class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">
-                        To Date
-                    </label>
-                    <div class="relative">
-                        <i class="fas fa-calendar absolute left-3 top-3 h-4 w-4 text-gray-400"></i>
-                        <input type="date" id="to-date" class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">
-                        Contact Number
-                    </label>
-                    <div class="relative">
-                        <i class="fas fa-phone absolute left-3 top-3 h-4 w-4 text-gray-400"></i>
-                        <input type="tel" id="contact-number" placeholder="+1 (555) 123-4567" class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flex justify-between mt-6">
-                <button id="cancel-booking" class="border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-100">
-                    Cancel
-                </button>
-                <button id="send-whatsapp" class="bg-primary hover:bg-secondary text-white font-medium py-2 px-6 rounded-lg transition-colors">
-                    Request via WhatsApp
-                </button>
-            </div>
-        </div>
+      <div class="features" aria-hidden="true">
+        <div class="feat"><div class="dot"></div><div><strong>Share updates</strong><div class="small">Post status, photos and stories.</div></div></div>
+        <div class="feat"><div class="dot"></div><div><strong>Find friends</strong><div class="small">People you may know, groups and more.</div></div></div>
+        <div class="feat"><div class="dot"></div><div><strong>Stay informed</strong><div class="small">News and trending topics.</div></div></div>
+      </div>
     </div>
 
-    <!-- Features Section -->
-    <section id="services" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Why Choose Us</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="feature-card text-center p-6 bg-white rounded-xl shadow-sm">
-                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-clock text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">24/7 Availability</h3>
-                    <p class="text-gray-600">
-                        Our services are available around the clock for your convenience
-                    </p>
-                </div>
-                
-                <div class="feature-card text-center p-6 bg-white rounded-xl shadow-sm">
-                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-user-tie text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Professional Drivers</h3>
-                    <p class="text-gray-600">
-                        Experienced and courteous drivers for a comfortable journey
-                    </p>
-                </div>
-                
-                <div class="feature-card text-center p-6 bg-white rounded-xl shadow-sm">
-                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-car text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Well-Maintained Fleet</h3>
-                    <p class="text-gray-600">
-                        All vehicles are regularly serviced for your safety and comfort
-                    </p>
-                </div>
-            </div>
+    <!-- RIGHT -->
+    <div class="card" role="region" aria-label="Login card">
+      <form id="loginForm" novalidate>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div style="font-size:20px;font-weight:700">Log in</div>
+          <div class="small">or <a href="#" class="link">create an account</a></div>
         </div>
-    </section>
 
-    <!-- Pricing Section -->
-    <section class="py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-4 text-gray-800">Our Pricing</h2>
-            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-                Transparent pricing with no hidden fees
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="pricing-table bg-white rounded-xl p-6">
-                    <h3 class="text-xl font-bold text-center mb-4">Taxi Service</h3>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                            <span>Starting at $2.50 per km</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                            <span>Minimum charge for 5 km</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                            <span>Waiting time: $0.50/min</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                            <span>Airport pickup surcharge</span>
-                        </li>
-                    </ul>
-                    <button class="w-full bg-primary hover:bg-secondary text-white font-medium py-3 rounded-lg transition-colors">
-                        Book Taxi Now
-                    </button>
-                </div>
-                
-                <div class="pricing-table pricing-popular bg-white rounded-xl p-6 border-2 border-primary relative">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-white text-sm font-bold px-4 py-1 rounded-full">
-                        MOST POPULAR
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-4">Self-Drive Rental</h3>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                            <span>Starting at $35/day</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                            <span>150 free km/day</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                            <span>$0.25/km excess charge</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                            <span>Unlimited mileage option</span>
-                        </li>
-                    </ul>
-                    <button class="w-full bg-primary hover:bg-secondary text-white font-medium py-3 rounded-lg transition-colors">
-                        Rent Now
-                    </button>
-                </div>
-            </div>
+        <!-- email -->
+        <div class="input-row">
+          <label for="email">Email or phone</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="username" />
         </div>
-    </section>
 
-    <!-- Testimonials -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">What Our Customers Say</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
-                        <div class="ml-4">
-                            <h4 class="font-bold">Sarah Johnson</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">
-                        "The taxi service was exceptional! The driver was punctual and very professional. Will definitely use DriveEasy again for my airport transfers."
-                    </p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
-                        <div class="ml-4">
-                            <h4 class="font-bold">Michael Chen</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">
-                        "Rented a car for our weekend trip and it was perfect. The process was smooth and the car was in excellent condition. Great value for money!"
-                    </p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
-                        <div class="ml-4">
-                            <h4 class="font-bold">Emma Rodriguez</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">
-                        "Used their self-drive service for a business trip. The booking was straightforward and the car was exactly as described. Highly recommended!"
-                    </p>
-                </div>
-            </div>
+        <!-- password with show toggle -->
+        <div class="input-row" style="position:relative">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Your password" required autocomplete="current-password" />
+          <button type="button" id="togglePwd" aria-label="Show password" title="Show password"
+                  style="position:absolute; right:10px; top:40px; border:none; background:none; cursor:pointer; font-size:13px;">Show</button>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-                <div class="md:flex">
-                    <div class="md:w-1/2 bg-primary text-white p-8">
-                        <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
-                        <p class="mb-6">
-                            Have questions or need assistance? Our team is here to help you 24/7.
-                        </p>
-                        <div class="space-y-4">
-                            <div class="flex items-start">
-                                <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
-                                <span>123 Main Street, City, State 12345</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-phone mr-3"></i>
-                                <span>(123) 456-7890</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-envelope mr-3"></i>
-                                <span>info@driveeasy.com</span>
-                            </div>
-                        </div>
-                        <div class="mt-8">
-                            <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
-                            <div class="flex space-x-4">
-                                <a href="#" class="bg-white/20 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="bg-white/20 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="bg-white/20 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="md:w-1/2 p-8">
-                        <h3 class="text-2xl font-bold mb-6">Send us a message</h3>
-                        <form>
-                            <div class="mb-4">
-                                <input type="text" placeholder="Your Name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
-                            </div>
-                            <div class="mb-4">
-                                <input type="email" placeholder="Your Email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
-                            </div>
-                            <div class="mb-4">
-                                <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-primary hover:bg-secondary text-white font-medium py-3 rounded-lg transition-colors">
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div class="row" style="margin-top:6px;">
+          <label class="remember"><input type="checkbox" id="remember" /> Remember me</label>
+          <a href="#" class="link small">Forgotten password?</a>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">DriveEasy</h3>
-                    <p class="text-gray-400">
-                        Premium car rental and taxi services for all your transportation needs.
-                    </p>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Services</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white">Taxi Service</a></li>
-                        <li><a href="#" class="hover:text-white">Self-Drive Rental</a></li>
-                        <li><a href="#" class="hover:text-white">Airport Transfers</a></li>
-                        <li><a href="#" class="hover:text-white">Corporate Solutions</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white">Home</a></li>
-                        <li><a href="#vehicles" class="hover:text-white">Vehicles</a></li>
-                        <li><a href="#services" class="hover:text-white">Services</a></li>
-                        <li><a href="#contact" class="hover:text-white">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Newsletter</h4>
-                    <p class="text-gray-400 mb-4">
-                        Subscribe to get special offers and updates
-                    </p>
-                    <div class="flex">
-                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg w-full text-gray-800">
-                        <button class="bg-primary hover:bg-secondary px-4 rounded-r-lg">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2023 DriveEasy. All rights reserved.</p>
-            </div>
+        <div>
+          <button class="btn-primary" type="submit">Log In</button>
         </div>
-    </footer>
 
-    <script>
-        // Vehicle data
-        const taxiVehicles = [
-            {
-                id: "taxi1",
-                name: "Standard Sedan",
-                seats: 4,
-                transmission: "Automatic",
-                availability: true,
-                pricePerDay: 50,
-                pricePerKm: 0.50,
-                image: "sedan"
-            },
-            {
-                id: "taxi2",
-                name: "SUV",
-                seats: 6,
-                transmission: "Automatic",
-                availability: true,
-                pricePerDay: 75,
-                pricePerKm: 0.75,
-                image: "suv"
-            },
-            {
-                id: "taxi3",
-                name: "Luxury Car",
-                seats: 4,
-                transmission: "Automatic",
-                availability: false,
-                pricePerDay: 120,
-                pricePerKm: 1.00,
-                image: "luxury"
-            }
-        ];
+        <div id="msg" role="status" aria-live="polite" class="small" style="padding-top:6px;color:var(--muted)">
+          Use this demo form — validation is client-side only.
+        </div>
 
-        const selfDriveVehicles = [
-            {
-                id: "self1",
-                name: "Economy Hatchback",
-                seats: 4,
-                transmission: "Manual",
-                availability: true,
-                pricePerDay: 35,
-                dailyKmLimit: 150,
-                excessKmCharge: 0.25,
-                image: "hatchback"
-            },
-            {
-                id: "self2",
-                name: "Compact SUV",
-                seats: 5,
-                transmission: "Automatic",
-                availability: true,
-                pricePerDay: 60,
-                dailyKmLimit: 200,
-                excessKmCharge: 0.30,
-                image: "suv"
-            },
-            {
-                id: "self3",
-                name: "Premium Sedan",
-                seats: 5,
-                transmission: "Automatic",
-                availability: true,
-                pricePerDay: 85,
-                dailyKmLimit: 250,
-                excessKmCharge: 0.40,
-                image: "sedan"
-            }
-        ];
+        <div class="create" style="margin-top:12px;">
+          <button type="button" class="cta" onclick="alert('Sign up demo')">Create new account</button>
+        </div>
 
-        // DOM Elements
-        const taxiBtn = document.getElementById('taxi-btn');
-        const selfDriveBtn = document.getElementById('self-drive-btn');
-        const sectionTitle = document.getElementById('section-title');
-        const sectionDescription = document.getElementById('section-description');
-        const vehicleGrid = document.getElementById('vehicle-grid');
-        const bookingModal = document.getElementById('booking-modal');
-        const closeModal = document.getElementById('close-modal');
-        const cancelBooking = document.getElementById('cancel-booking');
-        const sendWhatsApp = document.getElementById('send-whatsapp');
-        const selectedVehicle = document.getElementById('selected-vehicle');
-        const fromDate = document.getElementById('from-date');
-        const toDate = document.getElementById('to-date');
-        const contactNumber = document.getElementById('contact-number');
+        <div class="links small" style="margin-top:10px;">
+          <a href="#" class="link">Create a Page</a> for a celebrity, brand or business.
+        </div>
 
-        // State
-        let selectedService = 'taxi';
-        let currentVehicle = null;
+      </form>
+    </div>
+  </div>
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            renderVehicles();
-            setupEventListeners();
-        });
+  <script>
+    // Simple client-side behavior: validation + toggle password
+    (function(){
+      const form = document.getElementById('loginForm');
+      const email = document.getElementById('email');
+      const pwd = document.getElementById('password');
+      const msg = document.getElementById('msg');
+      const toggle = document.getElementById('togglePwd');
 
-        // Set up event listeners
-        function setupEventListeners() {
-            taxiBtn.addEventListener('click', () => switchService('taxi'));
-            selfDriveBtn.addEventListener('click', () => switchService('self-drive'));
-            closeModal.addEventListener('click', closeBookingModal);
-            cancelBooking.addEventListener('click', closeBookingModal);
-            sendWhatsApp.addEventListener('click', sendBookingToWhatsApp);
+      toggle.addEventListener('click', () => {
+        if (pwd.type === 'password') {
+          pwd.type = 'text';
+          toggle.textContent = 'Hide';
+          toggle.setAttribute('aria-label','Hide password');
+        } else {
+          pwd.type = 'password';
+          toggle.textContent = 'Show';
+          toggle.setAttribute('aria-label','Show password');
+        }
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        msg.style.color = 'var(--muted)';
+        msg.textContent = '';
+
+        const emailVal = email.value.trim();
+        const pwdVal = pwd.value;
+
+        // basic checks
+        if (!emailVal || !pwdVal) {
+          msg.style.color = 'var(--danger)';
+          msg.textContent = 'Please enter both email/phone and password.';
+          return;
         }
 
-        // Switch between services
-        function switchService(service) {
-            selectedService = service;
-            
-            // Update button states
-            if (service === 'taxi') {
-                taxiBtn.classList.add('active');
-                selfDriveBtn.classList.remove('active');
-                sectionTitle.textContent = 'Available Taxi Vehicles';
-                sectionDescription.textContent = 'Professional drivers, comfortable rides for any occasion';
-            } else {
-                selfDriveBtn.classList.add('active');
-                taxiBtn.classList.remove('active');
-                sectionTitle.textContent = 'Self-Drive Options';
-                sectionDescription.textContent = 'Freedom to explore at your own pace with our reliable vehicles';
-            }
-            
-            renderVehicles();
+        // crude email/phone validation
+        const emailLike = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+        const phoneLike = /^\+?\d{7,15}$/.test(emailVal);
+
+        if (!emailLike && !phoneLike) {
+          msg.style.color = 'var(--danger)';
+          msg.textContent = 'Enter a valid email address or phone number.';
+          return;
         }
 
-        // Render vehicles based on selected service
-        function renderVehicles() {
-            const vehicles = selectedService === 'taxi' ? taxiVehicles : selfDriveVehicles;
-            vehicleGrid.innerHTML = '';
-            
-            vehicles.forEach(vehicle => {
-                const vehicleCard = document.createElement('div');
-                vehicleCard.className = 'vehicle-card bg-white rounded-xl overflow-hidden shadow-md';
-                
-                vehicleCard.innerHTML = `
-                    <div class="bg-gray-200 h-48 flex items-center justify-center">
-                        <div class="bg-gray-300 border-2 border-dashed rounded-xl w-16 h-16" />
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold">${vehicle.name}</h3>
-                            ${!vehicle.availability ? 
-                                '<span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Unavailable</span>' : 
-                                ''}
-                        </div>
-                        
-                        <div class="space-y-3 mb-6">
-                            <div class="flex items-center text-gray-600">
-                                <i class="fas fa-user-friends mr-2"></i>
-                                <span>${vehicle.seats} Seats</span>
-                            </div>
-                            <div class="flex items-center text-gray-600">
-                                <i class="fas fa-cog mr-2"></i>
-                                <span>${vehicle.transmission}</span>
-                            </div>
-                            
-                            ${selectedService === 'taxi' ? `
-                                <div class="pt-2">
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-600">Per Day</span>
-                                        <span class="font-semibold">$${vehicle.pricePerDay}</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Per Kilometer</span>
-                                        <span class="font-semibold">$${vehicle.pricePerKm}/km</span>
-                                    </div>
-                                </div>
-                            ` : `
-                                <div class="pt-2">
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-600">Daily Rate</span>
-                                        <span class="font-semibold">$${vehicle.pricePerDay}</span>
-                                    </div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-600">Daily Limit</span>
-                                        <span class="font-semibold">${vehicle.dailyKmLimit} km</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Excess Charge</span>
-                                        <span class="font-semibold">$${vehicle.excessKmCharge}/km</span>
-                                    </div>
-                                </div>
-                            `}
-                        </div>
-                        
-                        <button class="w-full bg-primary hover:bg-secondary text-white font-medium py-3 rounded-lg transition-colors ${!vehicle.availability ? 'opacity-50 cursor-not-allowed' : ''}" 
-                                ${!vehicle.availability ? 'disabled' : ''} 
-                                data-id="${vehicle.id}">
-                            ${vehicle.availability ? 'Book Now' : 'Coming Soon'}
-                        </button>
-                    </div>
-                `;
-                
-                vehicleGrid.appendChild(vehicleCard);
-                
-                // Add event listener to the book button
-                const bookButton = vehicleCard.querySelector('button');
-                bookButton.addEventListener('click', () => {
-                    if (vehicle.availability) {
-                        openBookingModal(vehicle);
-                    }
-                });
-            });
-        }
-
-        // Open booking modal
-        function openBookingModal(vehicle) {
-            currentVehicle = vehicle;
-            selectedVehicle.textContent = vehicle.name;
-            fromDate.value = '';
-            toDate.value = '';
-            contactNumber.value = '';
-            bookingModal.classList.add('active');
-        }
-
-        // Close booking modal
-        function closeBookingModal() {
-            bookingModal.classList.remove('active');
-        }
-
-        // Send booking to WhatsApp
-        function sendBookingToWhatsApp() {
-            if (!currentVehicle || !fromDate.value || !toDate.value || !contactNumber.value) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            const serviceType = selectedService === 'taxi' ? 'Taxi Service' : 'Self-Drive Rental';
-            const from = new Date(fromDate.value).toLocaleDateString();
-            const to = new Date(toDate.value).toLocaleDateString();
-            
-            const message = `Hello, I'd like to book a ${currentVehicle.name} for ${serviceType}.\n\n` +
-                `From: ${from}\n` +
-                `To: ${to}\n` +
-                `Contact: ${contactNumber.value}\n\n` +
-                `Please confirm availability. Thank you!`;
-            
-            const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/1234567890?text=${encodedMessage}`, '_blank');
-            closeBookingModal();
-        }
-    </script>
+        // success demo
+        msg.style.color = 'green';
+        msg.textContent = 'Login successful (demo). No network requests are made.';
+        // NOTE: In a real app you'd submit to the server here.
+      });
+    })();
+  </script>
 </body>
 </html>
