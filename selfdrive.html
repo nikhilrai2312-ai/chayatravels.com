@@ -3,31 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Self-Drive Booking - BlueCastle Travels</title>
+    <title>Self-Drive Booking - Chaya Travels</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Book a Self-Drive Car</h1>
-    </header>
 
-    <section class="car-list">
-        <!-- Self-Drive Card -->
-        <div class="car-card">
-            <img src="assets/chaya.png" alt="Car Name">
-            <h3>Self-Drive Car 1</h3>
-            <p>Price per day: ₹1000</p>
-            <p>Km limit per day: 100 km | Extra km: ₹5/km</p>
-            <form class="booking-form" data-type="self-drive">
-                <label>Start Date:</label>
-                <input type="date" name="start_date" required>
-                <label>End Date:</label>
-                <input type="date" name="end_date" required>
-                <input type="hidden" name="car_name" value="Self-Drive Car 1">
-                <button type="submit" class="btn btn-primary">Book Now</button>
-            </form>
-        </div>
-    </section>
+<header class="header">
+    <img src="assets/FullLogo.jpg" class="logo" alt="Chaya Travels">
+</header>
+
+<h1 class="page-title">Book a Self-Drive Car</h1>
+
+<section class="car-list">
+
+    <div class="car-card">
+        <img src="assets/selfdrive.jpg" alt="Self Drive Car">
+
+        <h3>Self-Drive Car 1</h3>
+        <p>₹1000 per day</p>
+        <p>100 km per day • ₹5/km extra</p>
+
+        <form class="booking-form" data-type="self-drive">
+            <label>Start Date:</label>
+            <input type="date" name="start_date" required>
+
+            <label>End Date:</label>
+            <input type="date" name="end_date" required>
+
+            <input type="hidden" name="car_name" value="Self-Drive Car 1">
+
+            <button type="submit" class="btn btn-primary">Book Now</button>
+        </form>
+    </div>
+
+</section>
+
 </body>
 </html>
