@@ -3,28 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taxi Cars – Chaya Travels</title>
+    <title>Taxi Cars</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header class="header">
     <a href="index.html">
-        <img src="assets/FullLogo.jpg" class="logo" alt="Chaya Travels Logo">
+        <img src="assets/FullLogo.jpg" class="logo">
     </a>
 </header>
 
-<section class="page-section">
-    <h1 class="page-title">Taxi Cars</h1>
-    <div class="car-list">
-        <div class="car-card">
-            <img src="assets/taxi.jpg" alt="Taxi Car">
-            <h3>Taxi Car</h3>
-            <p>₹ Price per day / per km</p>
-        </div>
-    </div>
-</section>
+<h1 class="page-title">Taxi Cars</h1>
 
+<div class="car-list">
+
+    <!-- CAR CARD -->
+    <div class="car-card" data-type="taxi">
+        <img src="assets/taxi1.jpg" class="car-img">
+        <h2 class="car-name">Toyota Innova</h2>
+        <p class="car-price">₹3500 per day</p>
+        <button class="request-btn">Request</button>
+    </div>
+
+</div>
+
+<script src="request.js"></script>
 </body>
 </html>
