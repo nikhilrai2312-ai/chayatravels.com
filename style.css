@@ -1,122 +1,150 @@
-/* General */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f8f8f8;
-}
-
-/* Header */
+/* HEADER */
 .header {
-    padding: 10px 0;
-    display: flex; 
-    justify-content: flex-start;  /* Left align */
-    align-items: flex-start;      /* Top align */
-    background: #ffffff;
-    border-bottom: 1px solid #ddd;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px 30px;
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .logo {
-    width: 150px;
-    height: auto;
-    object-fit: contain;
+    width: 140px;
     cursor: pointer;
-    
 }
 
-/* Landing Section */
+/* HERO SECTION */
 .hero-section {
+    background: #f8f9fb;
+    padding: 80px 20px;
     text-align: center;
-    padding: 60px 20px;
 }
 
-.hero-section h1 {
-    font-size: 2.4rem;
+.hero-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #111;
     margin-bottom: 10px;
 }
 
-/* Buttons */
-.buttons .btn {
-    padding: 14px 28px;
-    margin: 12px;
+.hero-subtitle {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 35px;
+}
+
+/* BUTTONS */
+.button-group {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
     text-decoration: none;
-    font-size: 1.1rem;
-    border-radius: 6px;
     display: inline-block;
+    transition: 0.25s ease-in-out;
 }
 
-.btn-primary {
-    background: #007bff;
-    color: white;
+/* Taxi Plate Style */
+.taxi-btn {
+    background: #ffcc00;
+    color: #000;
+    border: 2px solid #000;
 }
 
-.btn-secondary {
-    background: #343a40;
-    color: white;
+.taxi-btn:hover {
+    background: #e6b800;
 }
 
-/* Destination Images */
-.dest-section {
-    text-align: center;
-    padding: 40px 20px;
+/* Self Drive Plate Style */
+.self-btn {
+    background: #000;
+    color: #ffcc00;
+    border: 2px solid #ffcc00;
 }
 
+.self-btn:hover {
+    background: #222;
+}
+
+/* DESTINATIONS */
 .destinations {
+    margin-top: 80px;
+    padding: 20px;
+}
+
+.dest-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 40px;
+}
+
+.dest-grid {
     display: flex;
     justify-content: center;
+    gap: 30px;
     flex-wrap: wrap;
-    gap: 15px;
 }
 
-.dest-img {
-    width: 260px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* Car Pages */
-.page-title {
+.dest-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 10px;
+    width: 220px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.08);
     text-align: center;
-    margin-top: 25px;
+    transition: 0.3s;
+}
+
+.dest-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 30px rgba(0,0,0,0.12);
+}
+
+.dest-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* CAR LIST */
+.page-section {
+    padding: 40px;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 32px;
+    margin-bottom: 30px;
 }
 
 .car-list {
     display: flex;
     justify-content: center;
-    padding: 30px;
 }
 
 .car-card {
-    background: white;
-    padding: 20px;
-    width: 320px;
+    width: 260px;
+    background: #fff;
+    padding: 15px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+    text-align: center;
 }
 
 .car-card img {
     width: 100%;
+    height: 150px;
+    object-fit: cover;
     border-radius: 10px;
-}
-
-/* Booking form */
-.booking-form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 15px;
-}
-
-.booking-form input {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-.booking-form button {
-    padding: 12px;
-    border: none;
-    background: #007bff;
-    color: white;
-    border-radius: 6px;
 }
