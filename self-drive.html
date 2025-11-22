@@ -10,7 +10,7 @@
 
 <header class="header">
     <a href="index.html">
-        <img src="assets/FullLogo.jpg" class="logo">
+        <img src="assets/FullLogo.jpg" class="logo" alt="Chaya Travels Logo">
     </a>
 </header>
 
@@ -23,11 +23,47 @@
         <img src="assets/self1.jpg" class="car-img">
         <h2 class="car-name">Hyundai Creta</h2>
         <p class="car-price">₹1800 per day</p>
-        <button class="request-btn">Request</button>
+        
+        <div class="customer-form">
+            <input type="text" id="selfName" placeholder="Your Name" required>
+            <input type="text" id="selfPickFrom" placeholder="Pick Up From" required>
+            <input type="text" id="selfPickTo" placeholder="Pick Up To" required>
+            <input type="date" id="selfPickDate" placeholder="Pick Up Date" required>
+            <input type="date" id="selfReturnDate" placeholder="Return Date" required>
+            <button id="selfSubmit">Submit Request</button>
+        </div>
     </div>
 
 </div>
 
-<script src="request.js"></script>
+<script>
+const selfWhatsappNumber = "918123711526"; // Replace with your WhatsApp number with country code
+
+document.getElementById('selfSubmit').addEventListener('click', () => {
+    const name = document.getElementById('selfName').value;
+    const pickFrom = document.getElementById('selfPickFrom').value;
+    const pickTo = document.getElementById('selfPickTo').value;
+    const pickDate = document.getElementById('selfPickDate').value;
+    const returnDate = document.getElementById('selfReturnDate').value;
+
+    if(!name || !pickFrom || !pickTo || !pickDate || !returnDate){
+        alert("Please fill all details!");
+        return;
+    }
+
+    const message = `Hello, I would like to book a Self-Drive car.\n\n` +
+                    `Car: Hyundai Creta\n` +
+                    `Name: ${name}\n` +
+                    `Pick Up From: ${pickFrom}\n` +
+                    `Pick Up To: ${pickTo}\n` +
+                    `Pick Up Date: ${pickDate}\n` +
+                    `Return Date: ${returnDate}\n` +
+                    `Pricing: ₹1800 per day`;
+
+    const whatsappURL = `https://wa.me/${selfWhatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
+});
+</script>
+
 </body>
 </html>
