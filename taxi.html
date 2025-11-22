@@ -10,7 +10,7 @@
 
 <header class="header">
     <a href="index.html">
-        <img src="assets/FullLogo.jpg" class="logo">
+        <img src="assets/FullLogo.jpg" class="logo" alt="Chaya Travels Logo">
     </a>
 </header>
 
@@ -20,14 +20,50 @@
 
     <!-- CAR CARD -->
     <div class="car-card" data-type="taxi">
-        <img src="assets/taxi1.jpg" class="car-img">
-        <h2 class="car-name">Toyota Innova</h2>
-        <p class="car-price">₹3500 per day</p>
-        <button class="request-btn">Request</button>
+        <img src="assets/taxi.jpg" class="car-img">
+        <h2 class="car-name">Toyota Etios</h2>
+        <p class="car-price">₹3000 per day (short distance) | ₹12 per km (long distance)</p>
+        
+        <div class="customer-form">
+            <input type="text" id="taxiName" placeholder="Your Name" required>
+            <input type="text" id="taxiPickFrom" placeholder="Pick Up From" required>
+            <input type="text" id="taxiPickTo" placeholder="Pick Up To" required>
+            <input type="date" id="taxiPickDate" placeholder="Pick Up Date" required>
+            <input type="date" id="taxiReturnDate" placeholder="Return Date" required>
+            <button id="taxiSubmit">Submit Request</button>
+        </div>
     </div>
 
 </div>
 
-<script src="request.js"></script>
+<script>
+const taxiWhatsappNumber = "919447823597"; // Replace with your WhatsApp number with country code
+
+document.getElementById('taxiSubmit').addEventListener('click', () => {
+    const name = document.getElementById('taxiName').value;
+    const pickFrom = document.getElementById('taxiPickFrom').value;
+    const pickTo = document.getElementById('taxiPickTo').value;
+    const pickDate = document.getElementById('taxiPickDate').value;
+    const returnDate = document.getElementById('taxiReturnDate').value;
+
+    if(!name || !pickFrom || !pickTo || !pickDate || !returnDate){
+        alert("Please fill all details!");
+        return;
+    }
+
+    const message = `Hello, I would like to book a Taxi.\n\n` +
+                    `Car: Toyota Etios\n` +
+                    `Name: ${name}\n` +
+                    `Pick Up From: ${pickFrom}\n` +
+                    `Pick Up To: ${pickTo}\n` +
+                    `Pick Up Date: ${pickDate}\n` +
+                    `Return Date: ${returnDate}\n` +
+                    `Pricing: ₹3000 per day (short distance), ₹12 per km (long distance)`;
+
+    const whatsappURL = `https://wa.me/${taxiWhatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
+});
+</script>
+
 </body>
 </html>
