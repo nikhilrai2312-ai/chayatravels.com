@@ -8,6 +8,7 @@ body {
 /* Header */
 .header {
     padding: 10px 0;
+    display: flex; 
     justify-content: flex-start;  /* Left align */
     align-items: flex-start;      /* Top align */
     background: #ffffff;
