@@ -3,48 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taxi Booking - Chaya Travels</title>
+    <title>Taxi Cars – Chaya Travels</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
+
 <body>
 
 <header class="header">
     <a href="index.html">
-        <img src="assets/FullLogo.jpg" class="logo" alt="Chaya Travels">
+        <img src="assets/FullLogo.jpg" class="logo" alt="Chaya Travels Logo">
     </a>
 </header>
 
-<h1 class="page-title">Book a Taxi</h1>
-
-<section class="car-list">
-
-    <div class="car-card">
-        <img src="assets/taxi.jpg" alt="Taxi Car">
-
-        <h3>Toyota Etios - 5 Seater </h3>
-        <p>₹2800 per day</p>
-        <p>₹12/km (Long Drive)</p>
-
-        <form class="booking-form" data-type="taxi">
-            <label>Pickup Location:</label>
-            <input type="text" name="pickup" required>
-
-            <label>Pickup Date:</label>
-            <input type="date" name="pickup_date" required>
-
-            <label>Drop Location:</label>
-            <input type="text" name="drop" required>
-
-            <label>Drop Date:</label>
-            <input type="date" name="drop_date" required>
-
-            <input type="hidden" name="car_name" value="Taxi Car 1">
-
-            <button type="submit" class="btn btn-primary">Book Now</button>
-        </form>
+<section class="page-section">
+    <h1 class="page-title">Taxi Cars</h1>
+    <div class="car-list">
+        <div class="car-card">
+            <img src="assets/taxi.jpg" alt="Taxi Car">
+            <h3>Taxi Car</h3>
+            <p>₹ Price per day / per km</p>
+        </div>
     </div>
-
 </section>
 
 </body>
