@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let message = "";
 
             if (type === "taxi") {
-                phone = "919447823597";
+                phone = "918123711526";
                 message =
                     `Hello, I would like to book a Taxi.\n` +
                     `Car: ${carName}\n` +
