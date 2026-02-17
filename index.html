@@ -167,9 +167,7 @@ footer {
 }
 
 .modal-content a {
-    color:#25D366;
     text-decoration:none;
-    font-weight:500;
 }
 
 .close {
@@ -178,6 +176,24 @@ footer {
     right:15px;
     font-size:20px;
     cursor:pointer;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #25D366;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    background-color: #1ebe5d;
 }
 
 /* Responsive */
@@ -259,13 +275,16 @@ footer {
         <span class="close" onclick="closeModal()">&times;</span>
         <h3>Website Under Development</h3>
         <p>
-        We are not yet completely ready with the website. We are still working on it.<br><br>
-        For now please contact <strong>+91 8123711526</strong><br><br>
-        Or click here to WhatsApp:<br>
-        <a href="https://wa.me/918123711526" target="_blank">
-        wa.me/+918123711526
-        </a>
+            We are not yet completely ready with the website. We are still working on it.<br><br>
+            For now please contact <strong>+91 8123711526</strong>
         </p>
+
+        <br>
+
+        <a href="https://wa.me/918123711526" target="_blank" class="whatsapp-btn">
+            <img src="https://img.icons8.com/ios-filled/24/ffffff/whatsapp.png" alt="WhatsApp">
+            Click Here to Chat on WhatsApp
+        </a>
     </div>
 </div>
 
