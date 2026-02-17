@@ -1,53 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaya Travels – Taxi & Self-Drive Cars</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chaya Travels | Premium Taxi & Self Drive Rentals</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0f1720;
+    color: #fff;
+}
+
+header {
+    padding: 20px 8%;
+    position: fixed;
+    width: 100%;
+    background: rgba(15,23,32,0.95);
+    backdrop-filter: blur(6px);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+    color: #d4af37;
+    letter-spacing: 1px;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+    url('https://images.unsplash.com/photo-1503376780353-7e6692767b70') center/cover no-repeat;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #cbd5e1;
+    margin-bottom: 40px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 35px;
+    border-radius: 40px;
+    font-size: 15px;
+    font-weight: 500;
+    background-color: transparent;
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #d4af37;
+    color: #000;
+}
+
+/* Modal Styling */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: #1e293b;
+    padding: 40px 30px;
+    border-radius: 12px;
+    max-width: 450px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content h3 {
+    margin-bottom: 15px;
+    color: #d4af37;
+}
+
+.modal-content p {
+    color: #cbd5e1;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.modal-content a {
+    color: #25D366;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header class="header">
-        <a href="index.html">
-            <img src="assets/FullLogo.jpg" class="logo" alt="Chaya Travels Logo">
+<header>
+    <div class="logo">CHAYA TRAVELS</div>
+</header>
+
+<section class="hero">
+    <div>
+        <h1>Drive in Comfort & Class</h1>
+        <p>Premium Taxi Services & Self Drive Rentals Designed for Convenience & Luxury.</p>
+
+        <div class="btn-group">
+            <button class="btn" onclick="openModal()">Book a Taxi</button>
+            <button class="btn" onclick="openModal()">Book Self Drive</button>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+
+<div class="modal" id="popup">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3>Website Under Development</h3>
+        <p>
+        We are not yet completely ready with the website. We are still working on it.<br><br>
+        For now please contact <strong>+91 8123711526</strong><br><br>
+        Or click here to WhatsApp:<br>
+        <a href="https://wa.me/918123711526" target="_blank">
+        wa.me/+918123711526
         </a>
-    </header>
+        </p>
+    </div>
+</div>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <h1 class="hero-title">Welcome to Chaya Travels</h1>
-        <p class="hero-subtitle">Premium Taxi & Self-Drive Car Rentals</p>
+<script>
+function openModal() {
+    document.getElementById("popup").style.display = "flex";
+}
 
-        <div class="button-group">
-            <a href="taxi.html" class="btn taxi-btn">Book a Taxi</a>
-            <a href="self-drive.html" class="btn self-btn">Book a Self-Drive Car</a>
-        </div>
-    </section>
+function closeModal() {
+    document.getElementById("popup").style.display = "none";
+}
 
-    <!-- Destination Section -->
-    <section class="destinations">
-        <h2 class="dest-title">Popular Destinations</h2>
-
-        <div class="dest-grid">
-            <div class="dest-card">
-                <img src="assets/dest1.png" alt="Destination 1">
-                <p>Destination 1</p>
-            </div>
-
-            <div class="dest-card">
-                <img src="assets/dest2.png" alt="Destination 2">
-                <p>Destination 2</p>
-            </div>
-
-            <div class="dest-card">
-                <img src="assets/dest3.png" alt="Destination 3">
-                <p>Destination 3</p>
-            </div>
-        </div>
-    </section>
+window.onclick = function(event) {
+    let modal = document.getElementById("popup");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 
 </body>
 </html>
